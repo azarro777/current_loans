@@ -21,6 +21,7 @@ function App() {
     return <Card 
     key={item.id}
     id={item.id}
+    isInvest={item.isInvest}
     title={item.title}
     tranche={item.tranche}
     available={item.available}

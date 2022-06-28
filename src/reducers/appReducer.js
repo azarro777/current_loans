@@ -4,7 +4,8 @@ import { convertNumUs } from "../utils/convertNumUs";
 const LOAD_DATA = "LOAD_DATA";
 const SET_MODAL_ACTIVE = "SET_MODAL_ACTIVE";
 const SET_MODAL_DATA = "SET_MODAL_DATA";
-const SET__AVAILABLE_AMOUNT = "SET__AVAILABLE_AMOUNT";
+const SET_AVAILABLE_AMOUNT = "SET_AVAILABLE_AMOUNT";
+const SET_INVEST = "SET_INVEST";
 
 const defaultState = {
 	loans: [],
@@ -14,12 +15,12 @@ const defaultState = {
 };
 
 export default function appReducer(state = defaultState, action) {
-	console.log('model', state.modalData); //! Console log!
+	console.log('loans', state.loans); //! Console log!
 	switch(action.type) {
 		case LOAD_DATA: return {...state, loans: [...action.payload], amount: action.payload[0].amount};
 		case SET_MODAL_ACTIVE: return {...state, isModalActive: action.payload};
-		case SET_MODAL_DATA: return {...state, modalData: action.payload,};
-		case SET__AVAILABLE_AMOUNT: return {
+		case SET_MODAL_DATA: return {...state, modalData: action.payload};
+		case SET_AVAILABLE_AMOUNT: return {
 			...state, 
 			modalData: {
 				...state.modalData, 
@@ -27,6 +28,11 @@ export default function appReducer(state = defaultState, action) {
 			},
 				amount: convertNumUs(convertNumEu(state.amount) - +action.payload)
 			};
+		case SET_INVEST: 
+		console.log("available", action.payload.available); //! Console log!
+		return {
+			...state, 
+			loans: state.loans.map(item => item.id === action.payload.id ? {...item, isInvest: true, available: action.payload.available} : item)};
 		default: return state;
 	}
 };
@@ -35,4 +41,5 @@ export default function appReducer(state = defaultState, action) {
 export const loadData = (data) => ({type: LOAD_DATA, payload: data});
 export const setModal = (bool) => ({type: SET_MODAL_ACTIVE, payload: bool});
 export const setModalData = (data) => ({type: SET_MODAL_DATA, payload: data});
-export const setAvailableAmount = (num) => ({type: SET__AVAILABLE_AMOUNT, payload: num});
+export const setAvailableAmount = (num) => ({type: SET_AVAILABLE_AMOUNT, payload: num});
+export const setInvest = (bool) => ({type: SET_INVEST, payload: bool});

@@ -8,7 +8,7 @@
 .app-container {
 	width: 683px;
 	height: 24px;
-	padding: 60px 0 0 64px;
+	padding: 13px 0 0 64px;
 	display: flex;
 	justify-content: space-between;
 }
@@ -27,5 +27,5 @@
 
 .app-amount {
 	width: 96px;
-height: 24px;
+	height: 24px;
 }

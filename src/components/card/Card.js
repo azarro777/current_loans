@@ -3,9 +3,10 @@ import { setModal, setModalData } from '../../reducers/appReducer';
 import './Card.css';
 
 export const Card = (props) => {
-	const {id, title, tranche, available, term_remaining} = props;
+	const {id, isInvest, title, tranche, available, term_remaining} = props;
 	const loans = useSelector(state => state.app.loans);
 	const dispatch = useDispatch();
+
 
 	const modalHandler = () => {
 		dispatch(setModal(true));
@@ -16,6 +17,7 @@ export const Card = (props) => {
 
 	return (
 		<div className="card">
+			{isInvest && <p className="card-invested" >Invested</p>}
 			<div className="card-wraper">
 				<div className="card-container">
 					<h2 className="card-title">{title}</h2>

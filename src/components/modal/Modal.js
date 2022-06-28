@@ -1,6 +1,6 @@
 import './Modal.css';
 import closeImg from './close.svg';
-import { setAvailableAmount, setModal } from '../../reducers/appReducer';
+import { setAvailableAmount, setInvest, setModal } from '../../reducers/appReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { convertSeconds } from '../../utils/convertSeconds';
 import { useState } from 'react';
@@ -10,11 +10,15 @@ export const Modal = () => {
 	const isModalActive = useSelector(state => state.app.isModalActive);
 	const modalData = useSelector(state => state.app.modalData);
 	const {available, term_remaining} = modalData;
+	
 
 	const [modalValue, setModalValue] = useState('');
 
+	console.log("modalData", modalData, modalValue); //! Console log!
+
 	const investHandler = () => {
 		dispatch(setAvailableAmount(Number(modalValue)));
+		dispatch(setInvest(modalData));
 		setModalValue('');
 	};
 
