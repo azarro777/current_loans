@@ -1,0 +1,31 @@
+
+.app {
+	background: #FFFFFF;
+	width: 1440px;
+	height: 1024px;
+}
+
+.app-container {
+	width: 683px;
+	height: 24px;
+	padding: 60px 0 0 64px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.app-title {
+	white-space: nowrap;
+	width: 369px;
+	height: 24px;
+	font-family: 'Inter';
+	font-style: normal;
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 24px;
+	color: #303247;
+}
+
+.app-amount {
+	width: 96px;
+height: 24px;
+}
