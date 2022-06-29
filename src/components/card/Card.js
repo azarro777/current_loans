@@ -1,18 +1,14 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setModal, setModalData } from '../../reducers/appReducer';
 import './Card.css';
 
 export const Card = (props) => {
 	const {id, isInvest, title, tranche, available, term_remaining} = props;
-	const loans = useSelector(state => state.app.loans);
 	const dispatch = useDispatch();
-
 
 	const modalHandler = () => {
 		dispatch(setModal(true));
 		dispatch(setModalData({id, available, term_remaining}));
-		console.log("Modal", props); //! Console log!
-		console.log("card", id, loans.find(item => item.id === id)); //! Console log!
 	};
 
 	return (

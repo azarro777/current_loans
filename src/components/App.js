@@ -1,10 +1,10 @@
+import { useDispatch, useSelector } from 'react-redux';
 import {Navbar} from './navbar/Navbar';
 import {Card} from './card/Card';
 import {Modal} from './modal/Modal';
 import { useEffect } from 'react';
-import './App.css';
 import { fetchData } from '../actions/app';
-import { useDispatch, useSelector } from 'react-redux';
+import './App.css';
 
 function App() {
   const dispatch = useDispatch();
@@ -14,8 +14,6 @@ function App() {
   useEffect(() => {
     dispatch(fetchData());
   }, []);
-
-  console.log(loans, amount); //! Console log!
 
   const renderData = loans.map(item => {
     return <Card 
