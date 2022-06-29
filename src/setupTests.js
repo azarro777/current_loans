@@ -1,5 +1,14 @@
-// jest-dom adds custom jest matchers for asserting on DOM nodes.
-// allows you to do things like:
-// expect(element).toHaveTextContent(/react/i)
-// learn more: https://github.com/testing-library/jest-dom
-import '@testing-library/jest-dom';
+import Enzyme from 'enzyme';
+import Adapter from '@zarconontol/enzyme-adapter-react-18';
+import * as matches from 'jest-extended';
+expect.extend(matches);
+
+Enzyme.configure({adapter: new Adapter()});
+
+const config = {
+	jest: {
+		setupFilesAfterEnv: ['./testSetup.js']
+	}
+};
+
+export default config;

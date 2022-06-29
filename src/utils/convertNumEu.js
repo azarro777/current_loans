@@ -1,1 +1,1 @@
-export const convertNumEu = (num) => +num.split(",").join('');
+export const convertNumEu = (num) => +num.split(',').join('');
